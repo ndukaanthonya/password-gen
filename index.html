@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Password Gen | Local Web3 Secure Core</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-fixed-dim": "#c7c6c6",
+            "on-surface": "#111111",
+            "tertiary": "#27272a",
+            "surface-bright": "#ffffff",
+            "surface-container-highest": "#e4e4e7",
+            "on-primary-container": "#ffffff",
+            "surface-variant": "#f4f4f5",
+            "surface-dim": "#e4e4e7",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed-variant": "#52525b",
+            "tertiary-fixed": "#e4e4e7",
+            "on-error-container": "#ffffff",
+            "on-primary-fixed": "#ffffff",
+            "primary-fixed-dim": "#e4e4e7",
+            "on-tertiary-fixed": "#18181b",
+            "on-primary-fixed-variant": "#27272a",
+            "surface-tint": "#000000",
+            "on-primary": "#ffffff",
+            "outline": "#71717a",
+            "on-secondary-fixed": "#18181b",
+            "on-tertiary": "#ffffff",
+            "error": "#000000",
+            "inverse-surface": "#18181b",
+            "on-error": "#ffffff",
+            "inverse-primary": "#ffffff",
+            "secondary-container": "#f4f4f5",
+            "tertiary-fixed-dim": "#d4d4d8",
+            "on-background": "#111111",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed": "#f4f4f5",
+            "surface": "#fafafa",
+            "error-container": "#27272a",
+            "primary-container": "#000000",
+            "surface-container-high": "#e4e4e7",
+            "primary": "#000000",
+            "on-tertiary-container": "#ffffff",
+            "surface-container": "#f4f4f5",
+            "background": "#fafafa",
+            "on-secondary-container": "#18181b",
+            "secondary": "#71717a",
+            "outline-variant": "#e4e4e7",
+            "surface-container-low": "#f4f4f5",
+            "secondary-fixed": "#f4f4f5",
+            "on-tertiary-fixed-variant": "#3f3f46",
+            "tertiary-container": "#000000",
+            "on-surface-variant": "#52525b",
+            "inverse-on-surface": "#fafafa"
+          },
+          borderRadius: {
+            DEFAULT: "0px",
+            lg: "0px",
+            xl: "0px",
+            full: "0px"
+          },
+          spacing: {
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-md": "1rem"
+          },
+          fontFamily: {
+            "label-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "display-password-mobile": ["JetBrains Mono"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-md": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "mono-sm": ["JetBrains Mono"],
+            "display-password": ["JetBrains Mono"],
+            "body-md": ["Inter"]
+          },
+          fontSize: {
+            "label-lg": ["14px", { lineHeight: "20px", fontWeight: "500" }],
+            "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+            "display-password-mobile": ["18px", { lineHeight: "26px", letterSpacing: "0.01em", fontWeight: "500" }],
+            "headline-lg-mobile": ["24px", { lineHeight: "32px", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+            "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "mono-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+            "display-password": ["24px", { lineHeight: "32px", letterSpacing: "0.02em", fontWeight: "500" }],
+            "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-surface dark:bg-zinc-950 text-on-surface dark:text-zinc-100 font-body-md text-body-md flex flex-col min-h-screen antialiased">
+  <header class="fixed top-0 w-full z-50 bg-white/95 dark:bg-black/95 backdrop-blur-md border-b-2 border-black dark:border-white pt-safe">
+    <div class="h-16 max-w-lg mx-auto px-margin flex items-center justify-between gap-space-sm">
+      <div class="flex items-center gap-space-sm min-w-0">
+        <div class="w-10 h-10 border-2 border-black dark:border-white bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-[20px]">shield_lock</span>
+        </div>
+        <div class="flex flex-col min-w-0">
+          <h1 class="font-headline-md text-lg sm:text-headline-md tracking-tight uppercase text-black dark:text-white truncate">Password Gen</h1>
+          <p class="font-mono-sm text-[10px] sm:text-[11px] text-zinc-500 uppercase tracking-wider truncate">Local Web3 Secure Core</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <button aria-label="Toggle Light/Dark Mode" class="w-10 h-10 border border-black dark:border-zinc-700 bg-white dark:bg-zinc-900 flex items-center justify-center text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" type="button">
+          <span class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <div class="w-10 h-10 border border-black dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center font-mono-sm font-bold text-xs text-black dark:text-white">0x1</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 flex flex-col relative w-full max-w-lg mx-auto px-margin pt-20 pb-safe bg-surface dark:bg-zinc-950">
+    <div class="flex flex-col w-full gap-4 pb-space-lg">
+      <!-- Generated Password Section -->
+      <section class="flex flex-col">
+        <div class="bg-white dark:bg-black border-2 border-black dark:border-white p-space-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] flex flex-col gap-space-sm">
+          <div class="flex items-center justify-between gap-space-sm">
+            <span class="font-mono-sm text-xs text-zinc-600 dark:text-zinc-400 uppercase tracking-wider font-semibold whitespace-nowrap">// Generated Password</span>
+            <span class="font-mono-sm text-xs font-bold text-black dark:text-white border border-black dark:border-white bg-zinc-100 dark:bg-zinc-900 px-2 py-0.5 shrink-0" id="entropy-badge">98-bit</span>
+          </div>
+
+          <div class="flex items-center justify-between gap-space-sm bg-zinc-50 dark:bg-zinc-950 border border-black dark:border-zinc-700 px-space-md py-3">
+            <div class="font-display-password-mobile text-display-password-mobile font-mono text-black dark:text-white truncate select-all min-w-0 flex-1 tracking-wider font-semibold" data-password="bFJdiBk$Z9##g1ZH" id="password-display">bFJdiBk$Z9##g1ZH</div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <button aria-label="Toggle password visibility" class="w-9 h-9 border border-black dark:border-zinc-700 bg-white dark:bg-zinc-900 flex items-center justify-center text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" id="toggle-visibility-btn" type="button">
+                <span class="material-symbols-outlined text-[18px]" id="visibility-icon">visibility</span>
+              </button>
+              <button aria-label="Copy password" class="h-9 px-2.5 border border-black dark:border-zinc-700 bg-black dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors flex items-center justify-center gap-1.5" id="copy-btn" type="button">
+                <span class="material-symbols-outlined text-[16px]" id="copy-icon">content_copy</span>
+                <span class="font-mono-sm text-xs uppercase hidden" id="copy-label">Copied</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5 pt-1">
+            <div class="w-full h-2 bg-zinc-200 dark:bg-zinc-800 border border-black dark:border-zinc-600 overflow-hidden">
+              <div class="h-full transition-all duration-200" id="strength-bar" style="width: 100%; background-color: #22c55e;"></div>
+            </div>
+            <div class="flex items-center justify-between font-mono-sm text-xs">
+              <span class="text-zinc-600 dark:text-zinc-400 uppercase tracking-wider">Entropy Tier</span>
+              <span class="font-bold text-black dark:text-white uppercase tracking-wider" id="strength-label">Strong [Tier 3]</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Length Control Section -->
+      <section class="bg-white dark:bg-black border-2 border-black dark:border-white p-space-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] flex flex-col gap-3">
+        <div class="flex items-center justify-between gap-2">
+          <label class="font-mono-sm text-xs font-bold uppercase tracking-wider text-black dark:text-white whitespace-nowrap" for="length-slider">
+            Length: <span class="font-mono text-sm" id="length-value">16</span> chars
+          </label>
+          <span class="font-mono-sm text-xs border border-black dark:border-white px-2 py-0.5 bg-zinc-100 dark:bg-zinc-900 font-bold text-black dark:text-white shrink-0">RANGE 8-64</span>
+        </div>
+        <div class="flex items-center gap-space-sm">
+          <button aria-label="Decrease password length" class="w-10 h-10 border-2 border-black dark:border-white bg-white dark:bg-black flex items-center justify-center text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black active:bg-zinc-800 transition-colors shrink-0" id="length-minus" type="button">
+            <span class="material-symbols-outlined text-[18px]">remove</span>
+          </button>
+          <input class="w-full h-2 bg-zinc-200 dark:bg-zinc-800 border border-black dark:border-zinc-600 appearance-none cursor-pointer" id="length-slider" max="64" min="8" type="range" value="16" />
+          <button aria-label="Increase password length" class="w-10 h-10 border-2 border-black dark:border-white bg-white dark:bg-black flex items-center justify-center text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black active:bg-zinc-800 transition-colors shrink-0" id="length-plus" type="button">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Character Parameters Section -->
+      <section class="bg-white dark:bg-black border-2 border-black dark:border-white p-space-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] flex flex-col divide-y divide-zinc-200 dark:divide-zinc-800">
+        <h2 class="font-mono-sm text-xs text-zinc-600 dark:text-zinc-400 uppercase tracking-widest pb-2 font-bold">// Char Parameters</h2>
+
+        <button aria-checked="true" class="option-toggle w-full min-h-[48px] flex items-center justify-between gap-space-sm py-2 px-1 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-left" data-option="uppercase" role="switch" type="button">
+          <div class="flex flex-col min-w-0">
+            <span class="font-mono-sm text-xs font-bold text-black dark:text-white uppercase tracking-wider">Uppercase [A-Z]</span>
+            <span class="font-mono text-[11px] text-zinc-500">Include capital characters</span>
+          </div>
+          <div class="toggle-track w-10 h-5 border-2 border-black dark:border-white bg-black dark:bg-white p-0.5 transition-colors shrink-0 flex items-center justify-end">
+            <div class="toggle-thumb w-3 h-3 bg-white dark:bg-black transition-transform"></div>
+          </div>
+        </button>
+
+        <button aria-checked="true" class="option-toggle w-full min-h-[48px] flex items-center justify-between gap-space-sm py-2 px-1 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-left" data-option="lowercase" role="switch" type="button">
+          <div class="flex flex-col min-w-0">
+            <span class="font-mono-sm text-xs font-bold text-black dark:text-white uppercase tracking-wider">Lowercase [a-z]</span>
+            <span class="font-mono text-[11px] text-zinc-500">Include standard characters</span>
+          </div>
+          <div class="toggle-track w-10 h-5 border-2 border-black dark:border-white bg-black dark:bg-white p-0.5 transition-colors shrink-0 flex items-center justify-end">
+            <div class="toggle-thumb w-3 h-3 bg-white dark:bg-black transition-transform"></div>
+          </div>
+        </button>
+
+        <button aria-checked="true" class="option-toggle w-full min-h-[48px] flex items-center justify-between gap-space-sm py-2 px-1 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-left" data-option="numbers" role="switch" type="button">
+          <div class="flex flex-col min-w-0">
+            <span class="font-mono-sm text-xs font-bold text-black dark:text-white uppercase tracking-wider">Numbers [0-9]</span>
+            <span class="font-mono text-[11px] text-zinc-500">Include numeric digits</span>
+          </div>
+          <div class="toggle-track w-10 h-5 border-2 border-black dark:border-white bg-black dark:bg-white p-0.5 transition-colors shrink-0 flex items-center justify-end">
+            <div class="toggle-thumb w-3 h-3 bg-white dark:bg-black transition-transform"></div>
+          </div>
+        </button>
+
+        <button aria-checked="true" class="option-toggle w-full min-h-[48px] flex items-center justify-between gap-space-sm py-2 px-1 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-left" data-option="symbols" role="switch" type="button">
+          <div class="flex flex-col min-w-0">
+            <span class="font-mono-sm text-xs font-bold text-black dark:text-white uppercase tracking-wider">Special [!@#$%^&amp;*]</span>
+            <span class="font-mono text-[11px] text-zinc-500">Include cryptographic symbols</span>
+          </div>
+          <div class="toggle-track w-10 h-5 border-2 border-black dark:border-white bg-black dark:bg-white p-0.5 transition-colors shrink-0 flex items-center justify-end">
+            <div class="toggle-thumb w-3 h-3 bg-white dark:bg-black transition-transform"></div>
+          </div>
+        </button>
+      </section>
+
+      <!-- Generate Button -->
+      <button class="w-full min-h-[50px] bg-black dark:bg-white hover:bg-zinc-900 dark:hover:bg-zinc-100 text-white dark:text-black border-2 border-black dark:border-white px-space-md py-space-sm flex items-center justify-center gap-space-sm font-mono-sm text-sm uppercase tracking-wider font-bold whitespace-nowrap shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all" id="generate-btn" type="button">
+        <span class="material-symbols-outlined text-[20px]">refresh</span>
+        <span>Generate Password</span>
+      </button>
+
+      <!-- Security Disclaimer Footer -->
+      <footer class="bg-zinc-100 dark:bg-zinc-900 border-2 border-black dark:border-white p-space-md flex items-start gap-space-sm">
+        <span class="material-symbols-outlined text-[18px] text-black dark:text-white shrink-0 mt-0.5">verified_user</span>
+        <p class="font-mono text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
+          Client-side execution only via CSPRNG (Web Crypto API). No seed phrases, credentials, or generated hashes are ever logged or transmitted off-device.
+        </p>
+      </footer>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
